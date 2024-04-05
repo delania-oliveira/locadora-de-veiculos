@@ -1,0 +1,25 @@
+-- SQLite
+
+-- Consultas Avançadas
+
+-- Exibe todas as locações realizadas, assim como também o nome do cliente, do automóvel e do funcionário vinculados em cada locação.
+SELECT START_DATE, END_DATE, TOTAL, EMPLOYEES.NAME AS EMPLOYEE_NAME, CUSTOMERS.NAME AS CUSTOMER_NAME, CARS.NAME AS CARS_NAME
+FROM LOCATIONS
+INNER JOIN CUSTOMERS ON CUSTOMERS.ID = LOCATIONS.CUSTOMER_ID
+INNER JOIN EMPLOYEES ON EMPLOYEES.ID = LOCATIONS.EMPLOYEE_ID
+INNER JOIN CARS ON CARS.ID = LOCATIONS.CAR_ID;
+
+-- Exibe o total de locações
+SELECT COUNT(*) AS LOCATIONS_NUMBER
+FROM LOCATIONS;
+
+-- Exibe a locação de maior valor
+SELECT * FROM LOCATIONS
+ORDER BY TOTAL DESC
+LIMIT 1;
+
+-- Exibe todas as locações realizadas entre as datas 20/05/2022 e 25/12/2022
+SELECT * FROM LOCATIONS
+WHERE START_DATE >= '2022-05-20' AND END_DATE <= '2022-12-25';
+
+
